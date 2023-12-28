@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PicoW Webserver</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        #textInput {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #submitBtn {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #submitBtn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+    <script>
+        // JavaScript function to submit the form when Enter key is pressed
+        function submitFormOnEnter(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent the default Enter key behavior (e.g., newline in text area)
+                document.getElementById("textForm").submit();
+            }
+        }
+    </script>
+</head>
+<body> 
+    <h1>Enter your message</h1>
+    <form id="textForm" action="/print_text.cgi" method="get">
+        <input type="text" id="textInput" name="text" maxlength="100" placeholder="Type your message" onkeydown="submitFormOnEnter(event)">
+        <br>
+        <input type="submit" id="submitBtn" value="Submit">
+    </form>
+</body>
+</html>
